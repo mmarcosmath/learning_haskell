@@ -114,4 +114,45 @@ auxSequencia n num ciclo
 
 {--#################################################--}
 
+nParFib :: Int -> Int
+nParFib n = auxParFib n 0
 
+auxParFib :: Int -> Int -> Int
+auxParFib n pFib
+    | n == 0 = fib (pFib-1)
+    | (fib pFib) `mod` 2 == 0 = auxParFib (n-1) (pFib + 1)
+    | otherwise = auxParFib n (pFib + 1)
+
+
+{--#################################################--}
+
+fat :: Int -> Int
+fat n
+    | n == 0 = 1
+    | n == 1 = 1
+    | otherwise = n * fat (n - 1)
+
+{--#################################################--}
+
+nFat :: Int -> Int
+nFat numFat = auxFat numFat 0
+
+auxFat :: Int -> Int -> Int
+auxFat numFat num
+    | numFat == 0 = 1
+    | numFat == 1 = 1
+    | numFat == fat num = num
+    | otherwise = auxFat numFat (num + 1)
+
+
+{--#################################################--}
+
+
+pG :: Int -> Int -> Int -> Int
+pG a q n
+    | n == 0 = 0
+    | n == 1 = a
+    | otherwise = pG (a * q) q (n - 1)
+
+
+{--#################################################--}
