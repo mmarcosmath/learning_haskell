@@ -156,3 +156,8 @@ pG a q n
 
 
 {--#################################################--}
+
+coletaDia :: Int -> Int
+coletaDia n 
+    | n == 1 = 7
+    | otherwise = (n * 7) + coletaDia (n - 1)
