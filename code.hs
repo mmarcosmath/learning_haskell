@@ -52,3 +52,66 @@ auxPrimo n d
 {--#################################################--}
 
 
+potencia :: Int -> Int -> Int
+potencia n expo
+    | expo == 0 = 1
+    | otherwise = n * potencia n (expo-1)
+
+
+{--#################################################--}
+
+nPrimo :: Int -> Int
+nPrimo n = auxNPrimo n 1
+
+auxNPrimo :: Int -> Int -> Int
+auxNPrimo n numPrimo
+    |n == 0 = numPrimo - 1
+    |primo numPrimo = auxNPrimo (n - 1) (numPrimo + 1)
+    |otherwise = auxNPrimo n (numPrimo + 1)
+
+
+{--#################################################--}
+
+
+fibonacciPrimo :: Int -> Int
+fibonacciPrimo n = auxFibonacciPrimo n 1
+
+auxFibonacciPrimo :: Int -> Int -> Int
+auxFibonacciPrimo n nPrimoFib
+    |n == 0 = fib (nPrimoFib - 1)
+    |primo (fib nPrimoFib) = auxFibonacciPrimo (n-1) (nPrimoFib + 1)
+    |otherwise = auxFibonacciPrimo n (nPrimoFib + 1)
+
+
+{--#################################################--}
+
+ehPerfeito :: Int -> Bool
+ehPerfeito n
+    | n == 0 = False
+    | n == 1 = False
+    | n == (auxEhPerfeito n (n `div` 2)) = True
+    | otherwise = False
+
+auxEhPerfeito :: Int -> Int -> Int
+auxEhPerfeito n d
+    | d == 1 = 1
+    | n `mod` d == 0 = d + auxEhPerfeito n (d - 1)
+    | otherwise = auxEhPerfeito n (d - 1)
+
+
+{--#################################################--}
+
+tamCiclo :: Int -> Int
+tamCiclo n = auxSequencia n n 0
+
+
+auxSequencia :: Int -> Int -> Int -> Int
+auxSequencia n num ciclo
+    | num == 1 = ciclo + 1
+    | num `mod` 2 == 0 = auxSequencia (n - 1) (num `div` 2) (ciclo + 1)
+    | otherwise = auxSequencia (n - 1) ((num * 3) + 1) (ciclo + 1)
+
+
+{--#################################################--}
+
+
