@@ -161,3 +161,19 @@ coletaDia :: Int -> Int
 coletaDia n 
     | n == 1 = 7
     | otherwise = (n * 7) + coletaDia (n - 1)
+
+{--#################################################--}
+
+type Hora = (Int,Int,Int)
+
+validaHora :: Hora -> Bool
+validaHora (h,m,s)
+    |h<0 || h>23 = False
+    |m<0 || m>59 = False
+    |s<0 || s>59 = False
+    |otherwise = True
+
+
+horaSegundo :: Hora -> Int
+horaSegundo (h,m,s) = (h*3600) + (m*60) + s
+
